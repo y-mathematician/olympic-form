@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My form</title>
+    <base target="_top" />
+    <style>
+      html,
+      body {
+        font-family: sans-serif, Arial;
+      }
+      h1 {
+        text-align: center;
+      }
+      iframe {
+        margin: auto;
+      }
+      #footer {
+        background-color: beige;
+        padding: 5px;
+      }
+      #timer {
+        display: flex;
+        justify-content: space-between;
+        width: 600px;
+        margin: auto;
+      }
+      .container {
+        width: 90%;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Your session has started!</h1>
+      <div id="timer">
+        <p>
+          Time alloted:
+          <span id="time-alloted"></span>
+        </p>
+        <p>Time remaining: <span id="time-remaining"></span></p>
+        <button>Pause once</button>
+      </div>
+      <iframe 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSf6zML8FgdrHwsgj3pYgfepmHd3tKWDk5Z-CVHYlj3YQ-Ltqg/viewform?embedded=true" 
+        width="640" height="502" 
+        frameborder="0" marginheight="0" marginwidth="0"
+      >
+            Loading…
+      </iframe>
+        
+    </div>
+    <div id="footer"><div class="container">Footer</div></div>
+  </body>
+</html>
