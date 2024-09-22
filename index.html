@@ -59,7 +59,7 @@
     </div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=557972274585947" nonce="s6UAdZBr"></script>
     <script>
-      const REPORT_URL = "https://script.google.com/macros/s/AKfycbyikykqCOlrdukUUmo3k-tSpS6g8btM-huqzzV3kTrcA2vK8gPEkInxSEvv5nfRiN4/exec";
+      const REPORT_URL = "https://script.google.com/macros/s/AKfycbwiBAqYyTqRNxXB9EqccvTrbWivGhfP94rEYxJ2UuJkq9n6FAFduqaOObNvWKCEt6af/exec";
 
       const pad = (num, places=2) => String(num).padStart(places, '0');
 
@@ -125,7 +125,7 @@
       var now = new Date().toLocaleString();
 
       var data = {
-        version: "v7",
+        formUrl: args.formUrl,
         studentId: args.studentId,
         repostId: args.repostId,
         minutes: args.minutes,
