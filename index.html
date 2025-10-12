@@ -59,8 +59,7 @@
     </div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=557972274585947" nonce="s6UAdZBr"></script>
     <script>
-      const REPORT_URL = "https://script.google.com/macros/s/AKfycbwiBAqYyTqRNxXB9EqccvTrbWivGhfP94rEYxJ2UuJkq9n6FAFduqaOObNvWKCEt6af/exec";
-
+      const REPORT_URL = "https://script.google.com/macros/s/AKfycbxi7Xj7YHLvrZ6N-ip286WO-5MfAmPrEwYv-Bxj4Ud-ftaYdUD7q1Cxnylb2h1Yr8Fi1Q/exec";
       const pad = (num, places=2) => String(num).padStart(places, '0');
 
       function secs2str(secs) {
@@ -81,11 +80,29 @@
 
       var fbSharedUrl = "";
 
-      function shareOnFacebook() {
-        var uri = encodeURIComponent(fbSharedUrl);
-        window.open("https://www.facebook.com/sharer/sharer.php?u="+uri+"&t="+uri, '', 
-          'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
-      }
+      var args64 = new URLSearchParams(window.location.search).get("A");
+      var args = JSON.parse(atob(args64));
+      console.log(args);
+
+      if (args.repostId) {
+  fbSharedUrl = args.repostId;
+
+  // If the URL is relative or missing scheme, prepend https://
+  if (!fbSharedUrl.startsWith("http")) {
+    fbSharedUrl = "https://" + fbSharedUrl;
+  }
+
+  // Show the Facebook button
+  shareButton.style.display = "inline";
+}
+
+// Updated share function
+function shareOnFacebook() {
+  if (!fbSharedUrl) return;
+  const uri = encodeURIComponent(fbSharedUrl);
+  const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${uri}`;
+  window.open(fbUrl, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+}
 
       function showShareButton(sharedUrl) {
         shareButton.setAttribute("data-href", sharedUrl);
@@ -101,12 +118,8 @@
         var data = JSON.parse(json);
         console.log(data);
         fbSharedUrl = data.sharedUrl;
-//        showShareButton(data.sharedUrl)
+        showShareButton(data.sharedUrl)
       }
-
-      var args64 = new URLSearchParams(window.location.search).get("A");
-      var args = JSON.parse(atob(args64));
-      console.log(args);
 
       var secsLeft = args.minutes * 60;
 
