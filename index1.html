@@ -46,7 +46,7 @@
         class="g-form"
         frameborder="0" marginheight="0" marginwidth="0"
       >
-            Loading?
+            Loading…
       </iframe>
       <button onclick="shareOnFacebook()">
         Share on Facebook
@@ -103,9 +103,6 @@ function shareOnFacebook() {
   const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${uri}`;
   window.open(fbUrl, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
 }
-//const fbButton = document.querySelector('.fb-share-button');
-//fbButton.setAttribute('data-href', args.repostId);
-//FB.XFBML.parse();
 
       function showShareButton(sharedUrl) {
         shareButton.setAttribute("data-href", sharedUrl);
@@ -125,38 +122,17 @@ function shareOnFacebook() {
       }
 
       var secsLeft = args.minutes * 60;
-      const totalSecs = args.minutes * 60;
-
-      // Try to restore start time from localStorage
-      let startTimeLocation = localStorage.getItem("startTimeLocation");
-
-      // If not found, save current time as start time
-      if (!startTimeLocation) {
-        let startTimeTmp = Date.now();
-        localStorage.setItem("startTimeLocation", startTimeTmp);
-      }
 
       trs.innerText = secs2str(secsLeft);
       iframe.src = args.formUrl;
 
       function updateTimer() {
-        const now = Date.now();
-		let startTime = localStorage.getItem("startTimeLocation");
-		if (!startTime) {
-			trs.innerText = "Error in startTime";
-			return;
-		}
-		
-        const elapsedSecs = Math.floor((now - startTime) / 1000);
-        const remainingSecs = totalSecs - elapsedSecs;
-
-        if (remainingSecs <= 0) {
-        trs.innerText = "Please, submit your answers";
-        clearInterval(timerInterval);
-        return;
+        if (secsLeft <= 0) {
+          trs.innerText = "Please, submit your answers";
+          return;
         }
-
-        trs.innerText = secs2str(remainingSecs);
+        secsLeft -= 1;
+        trs.innerText = secs2str(secsLeft);
       }
 
       var now = new Date().toLocaleString();
@@ -181,10 +157,8 @@ function shareOnFacebook() {
       .then(json => setFbRepost(json))
       .catch(err => console.log(err));
 
-      updateTimer();
-      const timerInterval = setInterval(updateTimer, 1000);
+      setInterval(updateTimer, 1000);
 
     </script>
   </body>
 </html>
-
