@@ -131,12 +131,12 @@ function shareOnFacebook() {
       let startTimeLocation = localStorage.getItem("startTimeLocation");
 
       // If not found, save current time as start time
-      if (startTimeLocation) {
+      if (!startTimeLocation) {
         let startTimeTmp = new Date().getTime();
         localStorage.setItem("startTimeLocation", startTimeTmp);
       }
 
-      trs.innerText = secs2str(totalSecs) + "CCC";
+      trs.innerText =  "CCC" + secs2str(totalSecs);
       iframe.src = args.formUrl;
 
       function updateTimer() {
@@ -156,7 +156,7 @@ function shareOnFacebook() {
         return;
         }
 
-        trs.innerText = secs2str(remainingSecs);
+        trs.innerText = "DDD" + secs2str(remainingSecs);
       }
 
       var now = new Date().toLocaleString();
