@@ -136,7 +136,7 @@ function shareOnFacebook() {
         localStorage.setItem("startTimeLocation", startTimeTmp);
       }
 
-      trs.innerText =  "CCC" + secs2str(totalSecs);
+      trs.innerText =  secs2str(totalSecs);
       iframe.src = args.formUrl;
 
       function updateTimer() {
@@ -151,12 +151,12 @@ function shareOnFacebook() {
         const remainingSecs = totalSecs - elapsedSecs;
 
         if (remainingSecs <= 0) {
-        trs.innerText = "Please, submit your answers AAAAA" + startTime + " " + totalSecs + " " + elapsedSecs;
+        trs.innerText = "Please, submit your answers, your time is over";
         clearInterval(timerInterval);
         return;
         }
 
-        trs.innerText = "DDD" + secs2str(remainingSecs);
+        trs.innerText = secs2str(remainingSecs);
       }
 
       var now = new Date().toLocaleString();
