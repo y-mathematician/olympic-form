@@ -151,7 +151,7 @@ function shareOnFacebook() {
         const remainingSecs = totalSecs - elapsedSecs;
 
         if (remainingSecs <= 0) {
-        trs.innerText = "Please, submit your answers AAAAA" + format(startTime, 'yyyy-MM-dd HH:mm:ss'); + " " + totalSecs + " " + elapsedSecs;
+        trs.innerText = "Please, submit your answers AAAAA" + format(startTime, 'yyyy-MM-dd HH:mm:ss') + " " + totalSecs + " " + elapsedSecs;
         clearInterval(timerInterval);
         return;
         }
