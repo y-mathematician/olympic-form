@@ -132,15 +132,15 @@ function shareOnFacebook() {
 
       // If not found, save current time as start time
       if (!startTimeLocation) {
-        let startTimeTmp = Date.now();
+        let startTimeTmp = new Date().getTime();
         localStorage.setItem("startTimeLocation", startTimeTmp);
       }
 
-      trs.innerText = secs2str(secsLeft);
+      trs.innerText = secs2str(totalSecs);
       iframe.src = args.formUrl;
 
       function updateTimer() {
-        const now = Date.now();
+        const now = new Date().getTime();
 		let startTime = localStorage.getItem("startTimeLocation");
 		if (!startTime) {
 			trs.innerText = "Error in startTime";
