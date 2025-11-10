@@ -131,10 +131,10 @@ function shareOnFacebook() {
       let startTimeLocation = localStorage.getItem("startTimeLocation");
 
       // If not found, save current time as start time
-      if (!startTimeLocation) {
+      //if (!startTimeLocation) {
         let startTimeTmp = new Date().getTime();
         localStorage.setItem("startTimeLocation", startTimeTmp);
-      }
+      //}
 
       trs.innerText = secs2str(totalSecs);
       iframe.src = args.formUrl;
@@ -151,7 +151,7 @@ function shareOnFacebook() {
         const remainingSecs = totalSecs - elapsedSecs;
 
         if (remainingSecs <= 0) {
-        trs.innerText = "Please, submit your answers AAAAA" + format(startTime, 'yyyy-MM-dd HH:mm:ss') + " " + totalSecs + " " + elapsedSecs;
+        trs.innerText = "Please, submit your answers AAAAA" + startTime + " " + totalSecs + " " + elapsedSecs;
         clearInterval(timerInterval);
         return;
         }
