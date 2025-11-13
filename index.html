@@ -128,12 +128,12 @@ function shareOnFacebook() {
       const totalSecs = args.minutes * 60;
 
       // Try to restore start time from localStorage
-      let startTimeLocation = localStorage.getItem("startTimeLocation" + args.studentId);
+      let startTimeLocation = localStorage.getItem("startTimeLocation" + args.studentId + args.studentClass);
 
       // If not found, save current time as start time
       if (!startTimeLocation) {
         let startTimeTmp = new Date().getTime();
-        localStorage.setItem("startTimeLocation" + args.studentId, startTimeTmp);
+        localStorage.setItem("startTimeLocation" + args.studentId + args.studentClass, startTimeTmp);
       }
 
       trs.innerText =  secs2str(totalSecs);
@@ -141,7 +141,7 @@ function shareOnFacebook() {
 
       function updateTimer() {
         const now = new Date().getTime();
-		let startTime = localStorage.getItem("startTimeLocation" + args.studentId);
+		let startTime = localStorage.getItem("startTimeLocation" + args.studentId + args.studentClass);
 		if (!startTime) {
 			trs.innerText = "Error in startTime";
 			return;
