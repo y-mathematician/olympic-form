@@ -59,7 +59,7 @@
     </div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=557972274585947" nonce="s6UAdZBr"></script>
     <script>
-      const REPORT_URL = "https://script.google.com/macros/s/AKfycbzzJWMNsgDcaa4qbSPcpytkoGj0vThkeU_ZIhnmiKgokcfmTPbEHIeZg--S03HHGSrO1g/exec"
+      const REPORT_URL = "https://script.google.com/macros/s/AKfycbypAT3IqWLLiYxyb2xtPT0g69t2R7MDbUm96rJNH2A6Ng2--5ZA2avVsZRebIa2ucMqQw/exec"
       const pad = (num, places=2) => String(num).padStart(places, '0');
 
       function secs2str(secs) {
@@ -166,6 +166,7 @@ function shareOnFacebook() {
         studentId: args.studentId,
         repostId: args.repostId,
         minutes: args.minutes,
+        studentClass: args.studentClass,
         start: now
       }
 
